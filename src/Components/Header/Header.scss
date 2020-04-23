@@ -1,0 +1,14 @@
+@import '../../mixins';
+
+.header-container {
+    @include header
+}
+
+.header-container nav {
+    width: 175px;
+    @include flex-container;
+}
+
+.header-container span {
+    font-size: 18px;
+}

@@ -1,0 +1,27 @@
+@import './variables';
+
+@mixin flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin header {
+    height: 75px;
+    width: 100%;
+    background-color: $primary-header-color;
+    position: fixed;
+    top: 0;
+    @include flex-container;
+    color: white;
+    box-sizing: border-box;
+    padding: 0px 25px;
+}
+
+@mixin container {
+    height: 100vh;
+    background-color: $primary-color;
+    box-sizing: border-box;
+    padding: 75px 25px 0px 25px;
+    color: white;
+}
