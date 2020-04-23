@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './Components/Header/Header';
-import Landing from './Components/Landing/Landing';
+import routes from './routes';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Landing />
+      {routes}
     </div>
   );
 }
