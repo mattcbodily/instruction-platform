@@ -11,4 +11,7 @@
 
 .auth-modal {
     @include modal;
+    @include flex-container;
+    flex-direction: column;
+    justify-content: center;
 }
