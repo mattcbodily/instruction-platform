@@ -14,4 +14,11 @@
     @include flex-container;
     flex-direction: column;
     justify-content: center;
+    color: black;
+}
+
+#close-icon {
+    position: absolute;
+    top: 15px;
+    left: 15px;
 }

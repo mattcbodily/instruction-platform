@@ -1,0 +1,9 @@
+@import './mixins';
+
+input {
+    @include input;
+}
+
+button {
+    @include button;
+}
