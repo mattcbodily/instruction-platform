@@ -1,5 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
+import './AuthModal.scss';
 
 export default props => (
-    <div>AuthModal</div>
+    <div className='auth-modal-backdrop'>
+        <section className='auth-modal'>
+
+        </section>
+    </div>
 )

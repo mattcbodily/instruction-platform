@@ -25,3 +25,15 @@
     padding: 75px 25px 0px 25px;
     color: white;
 }
+
+@mixin modal {
+    height: 500px;
+    width: 350px;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -175px;
+    border-radius: 20px;
+}

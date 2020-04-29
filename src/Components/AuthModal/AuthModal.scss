@@ -1,0 +1,14 @@
+@import '../../mixins';
+
+.auth-modal-backdrop {
+    height: 100vh;
+    width: 100%;
+    // fix background-color to have opacity
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.auth-modal {
+    @include modal;
+}
