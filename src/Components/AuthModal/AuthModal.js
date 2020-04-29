@@ -42,10 +42,23 @@ export default props => {
                             placeholder='Verify Password'
                             onChange={(e) => setVerPassword(e.target.value)}/>
                         <button onClick={() => setStep(2)}>Next</button>
+                        <div className='dot-flex'>
+                            <div className='dot active'></div>
+                            <div className='dot'></div>
+                            <div className='dot'></div>
+                        </div>
                     </section>
                 )
             case 2:
-                return;
+                return (
+                    <section className='auth-modal'>
+                        <div className='dot-flex'>
+                            <div className='dot active'></div>
+                            <div className='dot active'></div>
+                            <div className='dot'></div>
+                        </div>
+                    </section>
+                )
             default:
                 return;
         }

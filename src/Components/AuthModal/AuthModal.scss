@@ -22,3 +22,19 @@
     top: 15px;
     left: 15px;
 }
+
+.dot-flex {
+    @include flex-container;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin: 0px 3px;
+}
+
+.active {
+    background-color: blue;
+}
