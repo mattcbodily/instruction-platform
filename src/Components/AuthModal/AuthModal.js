@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 import './AuthModal.scss';
 
-export default props => {
+const AuthModal = props => {
     const [step, setStep] = useState(1),
           [firstName, setFirstName] = useState(''),
           [lastName, setLastName] = useState(''),
@@ -24,8 +25,9 @@ export default props => {
         }
         axios.post('/api/register', {firstName, lastName, email, password, planId: selectedPlan})
         .then(res => {
-            console.log(res.data)
             //do something with user data
+            props.toggleFn();
+            props.history.push('/dashboard');
         })
         .catch(err => console.log(err))
     }
@@ -124,5 +126,6 @@ export default props => {
             {registerSteps()}
         </div>
     )
-
 }
+
+export default withRouter(AuthModal);
