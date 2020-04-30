@@ -9,6 +9,6 @@ insert into users (
     ${lastName},
     ${email},
     ${hash},
-    ${instructor}
+    true
 )
 returning user_id, first_name, last_name, email, instructor;

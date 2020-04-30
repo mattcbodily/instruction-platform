@@ -18,7 +18,17 @@ export default props => {
         .catch(err => console.log(err))
     }, [])
 
-    console.log(selectedPlan)
+    const handleRegister = () => {
+        if(!password || password !== verPassword){
+            return alert("Passwords don't match")
+        }
+        axios.post('/api/register', {firstName, lastName, email, password, planId: selectedPlan})
+        .then(res => {
+            console.log(res.data)
+            //do something with user data
+        })
+        .catch(err => console.log(err))
+    }
 
     const registerSteps = () => {
         switch(step){
@@ -89,8 +99,12 @@ export default props => {
                             <circle cx="12" cy="12" r="10"></circle>
                             <line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>
                         </svg>
+                        <h3>Review Your Info</h3>
+                        <p>{firstName} {lastName}</p>
+                        <p>{email}</p>
+                        <p>${subPlans[selectedPlan - 1].price}/month Plan</p>
                         <button onClick={() => setStep(2)}>Previous</button>
-                        <button>Complete</button>
+                        <button onClick={handleRegister}>Complete</button>
                         <div className='dot-flex'>
                             <div className='dot active'></div>
                             <div className='dot active'></div>
@@ -98,6 +112,7 @@ export default props => {
                         </div>
                     </section>
                 )
+                //add a step for stripe payment collection when applicable
             default:
                 return;
         }
