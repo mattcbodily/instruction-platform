@@ -7,11 +7,11 @@ import ScheduleModule from './DashModules/ScheduleModule/ScheduleModule';
 import './Dashboard.scss';
 
 const Dashboard = props => {
-    useEffect(() => {
-        if(!props.user.email){
-            props.history.push('/')
-        }
-    }, [])
+    // useEffect(() => {
+    //     if(!props.user.email){
+    //         props.history.push('/')
+    //     }
+    // }, [props.user, props.history])
     
     return (
         <div className='dashboard'>
