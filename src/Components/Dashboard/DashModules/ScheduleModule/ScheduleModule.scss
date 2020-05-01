@@ -1,0 +1,6 @@
+@import '../../../../mixins';
+
+.schedule-module {
+    @include dash-module;
+    grid-area: schedule;
+}

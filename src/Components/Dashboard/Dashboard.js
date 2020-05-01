@@ -1,12 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
+import ProfileModule from './DashModules/ProfileModule/ProfileModule';
+import CourseModule from './DashModules/CourseModule/CourseModule';
+import AnalyticsModule from './DashModules/AnalyticsModule/AnalyticsModule';
+import ScheduleModule from './DashModules/ScheduleModule/ScheduleModule';
 import './Dashboard.scss';
 
 const Dashboard = props => {
-    console.log(props);
+    useEffect(() => {
+        if(!props.user.email){
+            props.history.push('/')
+        }
+    }, [])
+    
     return (
         <div className='dashboard'>
-            I am dashboard, hear me roar
+            <ProfileModule />
+            <CourseModule />
+            <AnalyticsModule />
+            <ScheduleModule />
         </div>
     )
 }

@@ -1,0 +1,6 @@
+@import '../../../../mixins';
+
+.course-module {
+    @include dash-module;
+    grid-area: course;
+}

@@ -38,6 +38,14 @@
     border-radius: 20px;
 }
 
+@mixin dash-module {
+    border: 2px solid white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 10px;
+}
+
 @mixin input {
     height: 35px;
     width: 300px;

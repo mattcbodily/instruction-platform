@@ -1,0 +1,6 @@
+@import '../../../../mixins';
+
+.profile-module {
+    @include dash-module;
+    grid-area: profile;
+}
