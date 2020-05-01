@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getUser} from '../../redux/userReducer';
 import axios from 'axios';
 import './AuthModal.scss';
 
@@ -26,7 +28,7 @@ const AuthModal = props => {
         }
         axios.post('/api/register', {firstName, lastName, email, password, planId: selectedPlan})
         .then(res => {
-            //do something with user data
+            props.getUser(res.data);
             props.toggleFn();
             props.history.push('/dashboard');
         })
@@ -36,7 +38,7 @@ const AuthModal = props => {
     const handleLogin = () => {
         axios.post('/api/login', {email, password})
         .then(res => {
-            //do something with user data
+            props.getUser(res.data);
             props.toggleFn();
             props.history.push('/dashboard');
         })
@@ -157,4 +159,4 @@ const AuthModal = props => {
     )
 }
 
-export default withRouter(AuthModal);
+export default withRouter(connect(null, {getUser})(AuthModal));
