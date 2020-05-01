@@ -11,7 +11,8 @@ const AuthModal = props => {
           [password, setPassword] = useState(''),
           [verPassword, setVerPassword] = useState(''),
           [subPlans, setSubPlans] = useState([]),
-          [selectedPlan, setSelectedPlan] = useState(null);
+          [selectedPlan, setSelectedPlan] = useState(null),
+          [loginView, setLoginView] = useState(false);
 
     useEffect(() => {
         axios.get('/api/plans')
@@ -32,6 +33,16 @@ const AuthModal = props => {
         .catch(err => console.log(err))
     }
 
+    const handleLogin = () => {
+        axios.post('/api/login', {email, password})
+        .then(res => {
+            //do something with user data
+            props.toggleFn();
+            props.history.push('/dashboard');
+        })
+        .catch(err => console.log(err));
+    }
+
     const registerSteps = () => {
         switch(step){
             case 1:
@@ -45,31 +56,32 @@ const AuthModal = props => {
                         <input 
                             value={firstName}
                             placeholder='First Name'
-                            onChange={(e) => setFirstName(e.target.value)}/>
+                            onChange={e => setFirstName(e.target.value)}/>
                         <input 
                             value={lastName}
                             placeholder='Last Name'
-                            onChange={(e) => setLastName(e.target.value)}/>
+                            onChange={e => setLastName(e.target.value)}/>
                         <input 
                             value={email}
                             placeholder='Email'
-                            onChange={(e) => setEmail(e.target.value)}/>
+                            onChange={e => setEmail(e.target.value)}/>
                         <input 
                             type='password'
                             value={password}
                             placeholder='Password'
-                            onChange={(e) => setPassword(e.target.value)}/>
+                            onChange={e => setPassword(e.target.value)}/>
                         <input
                             type='password' 
                             value={verPassword}
                             placeholder='Verify Password'
-                            onChange={(e) => setVerPassword(e.target.value)}/>
+                            onChange={e => setVerPassword(e.target.value)}/>
                         <button onClick={() => setStep(2)}>Next</button>
                         <div className='dot-flex'>
                             <div className='dot active'></div>
                             <div className='dot'></div>
                             <div className='dot'></div>
                         </div>
+                        <p>Already have an account? <span onClick={() => setLoginView(true)}>Login Here</span></p>
                     </section>
                 )
             case 2:
@@ -123,7 +135,24 @@ const AuthModal = props => {
     //consider switching this to conditional rendering instead of switch statement
     return (
         <div className='auth-modal-backdrop'>
-            {registerSteps()}
+            {loginView
+            ? (
+                <section className='auth-modal'>
+                    <h3>Login to view your account</h3>
+                    <input 
+                        value={email}
+                        placeholder='Email'
+                        onChange={e => setEmail(e.target.value)}/>
+                    <input 
+                        type='password'
+                        value={password}
+                        placeholder='Password'
+                        onChange={e => setPassword(e.target.value)}/>
+                    <button onClick={handleLogin}>Login</button>
+                    <p>Don't have an account? <span onClick={() => setLoginView(false)}>Register Here</span></p>
+                </section>
+            )
+            : registerSteps()}
         </div>
     )
 }

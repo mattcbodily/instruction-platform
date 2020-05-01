@@ -1,0 +1,5 @@
+@import '../../mixins';
+
+.dashboard {
+    @include container;
+}
