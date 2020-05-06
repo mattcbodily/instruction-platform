@@ -4,6 +4,7 @@ const express = require('express'),
       massive = require('massive'),
       authCtrl = require('./controllers/authCtrl'),
       subCtrl = require('./controllers/subCtrl'),
+      courseCtrl = require('./controllers/courseCtrl'),
       {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env,
       app = express();
 
@@ -30,5 +31,9 @@ app.get('/api/logout', authCtrl.logout);
 
 //subscription endpoints
 app.get('/api/plans', subCtrl.getSubscriptionPlans);
+
+//course endpoints
+app.get('/api/courses/:id', courseCtrl.getInstructorCourses);
+app.post('/api/course', courseCtrl.createCourse);
 
 app.listen(SERVER_PORT, () => console.log(`Server running on ${SERVER_PORT}`))

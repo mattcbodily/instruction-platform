@@ -17,3 +17,10 @@ create table if not exists user_subscription_join (
     user_id int references users(user_id),
     plan_id int references subscription_plans(plan_id)
 );
+
+create table if not exists courses (
+    course_id serial primary key,
+    course_name varchar(50),
+    description text,
+    instructor int references users(user_id)
+);
